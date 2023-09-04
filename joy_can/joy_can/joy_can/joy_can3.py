@@ -1,5 +1,6 @@
 # OS
 import time
+import argparse
 
 #ROS2-python
 import rclpy
@@ -14,7 +15,6 @@ from module.Switch import SwitchStatus,ToggleSwitch
 
 
 class JoyCan(Node):    
-    WITHOUT_CAN_MODE = True
     NUM_OF_SAVE_STATE_BUTTONS = 2
     DEADZONE = 3
     PC = 1 # 0=Portable_PC 1=F310
@@ -22,12 +22,11 @@ class JoyCan(Node):
     node_name = 'joy_can'
     topic_name = 'joy'
     
-    Ucan = UsbCan(WITHOUT_CAN_MODE)
-    t_switch = ToggleSwitch(NUM_OF_SAVE_STATE_BUTTONS)
-    
-    def __init__(self) -> None:
+    def __init__(self,DEBUG) -> None:
         super().__init__(self.node_name)
         self.sub = self.create_subscription(Joy,self.topic_name,self.callback,10)
+        self.Ucan = UsbCan(DEBUG)
+        self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
         self.Ucan.open()
         if self.NUM_OF_SAVE_STATE_BUTTONS:
             self.get_logger().info("setup done:DEBUG")
@@ -149,8 +148,12 @@ class JoyCan(Node):
         self.get_logger().info(print_text.format(*tx_msg1.data,*tx_msg2.data,*tx_msg3.data))
         
 def main(args=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--debug" ,action="store_true" ,help="If --debug is added, CAN communication will not be performed.")
+    cmd_arg = parser.parse_args()
+    
     rclpy.init(args=args)
-    joy_can = JoyCan()
+    joy_can = JoyCan(cmd_arg.debug)
     try:
         rclpy.spin(joy_can)
     except KeyboardInterrupt:

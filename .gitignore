@@ -5,3 +5,4 @@ log/
 resource/
 test/
 *.txt
+!joy_can/
