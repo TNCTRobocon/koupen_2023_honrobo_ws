@@ -92,11 +92,7 @@ class JoyCan(Node):
         
         print_text = "axis:{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3}\nbutton_data:{},{},{},{},{},{},{},{}\nhat:{},{},{},{},{},{},{},{}"
         self.get_logger().info(print_text.format(*tx_msg1.data,*tx_msg2.data,*tx_msg3.data))
-        
-        output = list(struct.unpack('@ffffffff',tx_msg1.data))
-        #output = struct.unpack('<f',tx_msg1.data[0])[0]
-        print(type(tx_msg1.data))
-        print(output)
+
         
 def main(args=None):
     

@@ -4,6 +4,7 @@ install/
 log/
 resource/
 test/
+.vscode/
 *.txt
 !joy_can/
 !ros_joy/
