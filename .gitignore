@@ -6,3 +6,4 @@ resource/
 test/
 *.txt
 !joy_can/
+!ros_joy/

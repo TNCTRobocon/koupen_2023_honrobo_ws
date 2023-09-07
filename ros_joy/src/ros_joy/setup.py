@@ -1,12 +1,12 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
-package_name = 'joy_can'
-submodules = 'joy_can/module'
+package_name = 'ros_joy'
+submodules = 'ros_joy/module'
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name, submodules],
+    packages=[package_name,submodules],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -21,7 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'joy_can = joy_can.joy_can:main'
+            'ros_joy = ros_joy.ros_joy:main'
         ],
     },
 )
