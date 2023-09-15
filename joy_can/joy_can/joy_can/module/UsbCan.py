@@ -22,7 +22,7 @@ class UsbCan:
             return
         self.__state = True
         try:
-            os.system('sudo ip link set can0 type can bitrate 500000')
+            os.system('sudo ip link set can0 type can bitrate 10000000')
             os.system('sudo ifconfig can0 up')
             os.system('sudo ifconfig can0 txqueuelen 10000') #バッファオーバーフロー対策 
             self.__can0 = can.interface.Bus(channel = 'can0', bustype = 'socketcan')
