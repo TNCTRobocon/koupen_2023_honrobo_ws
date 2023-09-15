@@ -36,8 +36,14 @@ class JoyCalcTools():
         
         if self.__PC == 0:
             ###Portable-PC
-            recaluculated_hat[0] = joy.axes[6] + 1 #hat_vertical
-            recaluculated_hat[1] = joy.axes[7] + 1 #hat_horizontal
+            recaluculated_hat[0] = joy.axes[7] + 1 #hat_vertical
+            recaluculated_hat[1] = joy.axes[6] + 1 #hat_horizontal
+            recaluculated_hat[2] = 0
+            recaluculated_hat[3] = 0
+            recaluculated_hat[4] = 0
+            recaluculated_hat[5] = 0
+            recaluculated_hat[6] = 0
+            recaluculated_hat[7] = 0
         elif self.__PC == 1:
             ###F310
             recaluculated_hat[0] = joy.axes[5] + 1 #hat_vertical
