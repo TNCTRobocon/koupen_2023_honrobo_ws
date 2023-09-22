@@ -23,7 +23,7 @@ class JoyCan(Node):
     PC = 1 # 0=Portable_PC 1=F310
     
     node_name = 'joy_can'
-    sub_topic_name = 'joy'
+    sub_topic_name = 'converted_joy'
     
     def __init__(self,DEBUG) -> None:
         super().__init__(self.node_name)
@@ -97,7 +97,7 @@ class JoyCan(Node):
 def main(args=None):
     
     rclpy.init(args=args)
-    joy_can = JoyCan(0) #0 = Normal, 1 = Without CAN
+    joy_can = JoyCan(1) #0 = Normal, 1 = Without CAN
     try:
         rclpy.spin(joy_can)
     except KeyboardInterrupt:
