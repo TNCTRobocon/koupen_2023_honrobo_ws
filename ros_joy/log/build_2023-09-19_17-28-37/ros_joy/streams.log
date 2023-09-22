@@ -1,0 +1,24 @@
+[0.679s] Invoking command in '/home/kohki/HONROBO_WS/ros_joy/src/ros_joy': PYTHONPATH=/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/prefix_override:/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ros_joy build --build-base /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build install --record /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log --single-version-externally-managed
+[0.897s] running egg_info
+[0.898s] writing ../../build/ros_joy/ros_joy.egg-info/PKG-INFO
+[0.898s] writing dependency_links to ../../build/ros_joy/ros_joy.egg-info/dependency_links.txt
+[0.898s] writing entry points to ../../build/ros_joy/ros_joy.egg-info/entry_points.txt
+[0.898s] writing requirements to ../../build/ros_joy/ros_joy.egg-info/requires.txt
+[0.898s] writing top-level names to ../../build/ros_joy/ros_joy.egg-info/top_level.txt
+[0.900s] reading manifest file '../../build/ros_joy/ros_joy.egg-info/SOURCES.txt'
+[0.906s] writing manifest file '../../build/ros_joy/ros_joy.egg-info/SOURCES.txt'
+[0.906s] running build
+[0.906s] running build_py
+[0.907s] copying ros_joy/module/UsbCan.py -> /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build/lib/ros_joy/module
+[0.907s] running install
+[0.907s] running install_lib
+[0.908s] copying /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build/lib/ros_joy/module/UsbCan.py -> /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy/module
+[0.909s] byte-compiling /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy/module/UsbCan.py to UsbCan.cpython-310.pyc
+[0.909s] running install_data
+[0.910s] running install_egg_info
+[0.912s] removing '/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy-0.0.0-py3.10.egg-info' (and everything under it)
+[0.912s] Copying ../../build/ros_joy/ros_joy.egg-info to /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy-0.0.0-py3.10.egg-info
+[0.913s] running install_scripts
+[0.934s] Installing ros_joy script to /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/ros_joy
+[0.934s] writing list of installed files to '/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log'
+[0.960s] Invoked command in '/home/kohki/HONROBO_WS/ros_joy/src/ros_joy' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/prefix_override:/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ros_joy build --build-base /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build install --record /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log --single-version-externally-managed

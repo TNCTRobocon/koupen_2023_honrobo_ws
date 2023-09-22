@@ -1,0 +1,37 @@
+[0.379s] Invoking command in '/home/kohki/HONROBO_WS/rs_ws/src/realsense_test': PYTHONPATH=/home/kohki/HONROBO_WS/rs_ws/build/realsense_test/prefix_override:/home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/realsense_test build --build-base /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build install --record /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/install.log --single-version-externally-managed
+[0.527s] running egg_info
+[0.528s] creating ../../build/realsense_test/realsense_test.egg-info
+[0.528s] writing ../../build/realsense_test/realsense_test.egg-info/PKG-INFO
+[0.528s] writing dependency_links to ../../build/realsense_test/realsense_test.egg-info/dependency_links.txt
+[0.528s] writing entry points to ../../build/realsense_test/realsense_test.egg-info/entry_points.txt
+[0.528s] writing requirements to ../../build/realsense_test/realsense_test.egg-info/requires.txt
+[0.528s] writing top-level names to ../../build/realsense_test/realsense_test.egg-info/top_level.txt
+[0.528s] writing manifest file '../../build/realsense_test/realsense_test.egg-info/SOURCES.txt'
+[0.530s] reading manifest file '../../build/realsense_test/realsense_test.egg-info/SOURCES.txt'
+[0.530s] writing manifest file '../../build/realsense_test/realsense_test.egg-info/SOURCES.txt'
+[0.530s] running build
+[0.531s] running build_py
+[0.531s] creating /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build
+[0.531s] creating /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib
+[0.531s] creating /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test
+[0.531s] copying realsense_test/__init__.py -> /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test
+[0.531s] copying realsense_test/realsense_sub.py -> /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test
+[0.531s] running install
+[0.531s] running install_lib
+[0.532s] creating /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test
+[0.532s] copying /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test/__init__.py -> /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test
+[0.532s] copying /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test/realsense_sub.py -> /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test
+[0.532s] byte-compiling /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test/__init__.py to __init__.cpython-310.pyc
+[0.532s] byte-compiling /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test/realsense_sub.py to realsense_sub.cpython-310.pyc
+[0.532s] running install_data
+[0.533s] creating /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/share/ament_index
+[0.533s] creating /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/share/ament_index/resource_index
+[0.533s] creating /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/share/ament_index/resource_index/packages
+[0.533s] copying resource/realsense_test -> /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/share/ament_index/resource_index/packages
+[0.533s] copying package.xml -> /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/share/realsense_test
+[0.533s] running install_egg_info
+[0.534s] Copying ../../build/realsense_test/realsense_test.egg-info to /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test-0.0.0-py3.10.egg-info
+[0.534s] running install_scripts
+[0.548s] Installing realsense_sub script to /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/realsense_test
+[0.548s] writing list of installed files to '/home/kohki/HONROBO_WS/rs_ws/build/realsense_test/install.log'
+[0.573s] Invoked command in '/home/kohki/HONROBO_WS/rs_ws/src/realsense_test' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/rs_ws/build/realsense_test/prefix_override:/home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/realsense_test build --build-base /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build install --record /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/install.log --single-version-externally-managed

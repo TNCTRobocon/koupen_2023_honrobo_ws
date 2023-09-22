@@ -1,0 +1,28 @@
+[0.374s] Invoking command in '/home/kohki/HONROBO_WS/gui_test/src/gui_test': PYTHONPATH=/home/kohki/HONROBO_WS/gui_test/src/build/gui_test/prefix_override:/home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/gui_test build --build-base /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build install --record /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/install.log --single-version-externally-managed
+[0.524s] running egg_info
+[0.525s] writing ../build/gui_test/gui_test.egg-info/PKG-INFO
+[0.525s] writing dependency_links to ../build/gui_test/gui_test.egg-info/dependency_links.txt
+[0.525s] writing entry points to ../build/gui_test/gui_test.egg-info/entry_points.txt
+[0.525s] writing requirements to ../build/gui_test/gui_test.egg-info/requires.txt
+[0.525s] writing top-level names to ../build/gui_test/gui_test.egg-info/top_level.txt
+[0.527s] reading manifest file '../build/gui_test/gui_test.egg-info/SOURCES.txt'
+[0.527s] writing manifest file '../build/gui_test/gui_test.egg-info/SOURCES.txt'
+[0.527s] running build
+[0.528s] running build_py
+[0.528s] copying gui_test/nomal_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test
+[0.528s] copying gui_test/gui_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test
+[0.528s] running install
+[0.528s] running install_lib
+[0.529s] copying /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test/nomal_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test
+[0.529s] copying /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test/gui_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test
+[0.529s] byte-compiling /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test/nomal_recieve.py to nomal_recieve.cpython-310.pyc
+[0.529s] byte-compiling /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test/gui_recieve.py to gui_recieve.cpython-310.pyc
+[0.530s] running install_data
+[0.530s] running install_egg_info
+[0.532s] removing '/home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info' (and everything under it)
+[0.532s] Copying ../build/gui_test/gui_test.egg-info to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info
+[0.532s] running install_scripts
+[0.544s] Installing gui_pub script to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/gui_test
+[0.545s] Installing gui_sub script to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/gui_test
+[0.545s] writing list of installed files to '/home/kohki/HONROBO_WS/gui_test/src/build/gui_test/install.log'
+[0.564s] Invoked command in '/home/kohki/HONROBO_WS/gui_test/src/gui_test' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/gui_test/src/build/gui_test/prefix_override:/home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/gui_test build --build-base /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build install --record /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/install.log --single-version-externally-managed

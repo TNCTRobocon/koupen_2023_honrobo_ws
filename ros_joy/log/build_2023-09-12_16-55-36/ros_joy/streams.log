@@ -1,0 +1,24 @@
+[0.517s] Invoking command in '/home/kohki/HONROBO_WS/ros_joy/src/ros_joy': PYTHONPATH=/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/prefix_override:/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ros_joy build --build-base /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build install --record /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log --single-version-externally-managed
+[0.737s] running egg_info
+[0.737s] writing ../../build/ros_joy/ros_joy.egg-info/PKG-INFO
+[0.738s] writing dependency_links to ../../build/ros_joy/ros_joy.egg-info/dependency_links.txt
+[0.738s] writing entry points to ../../build/ros_joy/ros_joy.egg-info/entry_points.txt
+[0.738s] writing requirements to ../../build/ros_joy/ros_joy.egg-info/requires.txt
+[0.738s] writing top-level names to ../../build/ros_joy/ros_joy.egg-info/top_level.txt
+[0.739s] reading manifest file '../../build/ros_joy/ros_joy.egg-info/SOURCES.txt'
+[0.739s] writing manifest file '../../build/ros_joy/ros_joy.egg-info/SOURCES.txt'
+[0.740s] running build
+[0.740s] running build_py
+[0.740s] copying ros_joy/ros_joy.py -> /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build/lib/ros_joy
+[0.740s] running install
+[0.740s] running install_lib
+[0.741s] copying /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build/lib/ros_joy/ros_joy.py -> /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy
+[0.742s] byte-compiling /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy/ros_joy.py to ros_joy.cpython-310.pyc
+[0.742s] running install_data
+[0.743s] running install_egg_info
+[0.745s] removing '/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy-0.0.0-py3.10.egg-info' (and everything under it)
+[0.745s] Copying ../../build/ros_joy/ros_joy.egg-info to /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages/ros_joy-0.0.0-py3.10.egg-info
+[0.745s] running install_scripts
+[0.760s] Installing ros_joy script to /home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/ros_joy
+[0.760s] writing list of installed files to '/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log'
+[0.778s] Invoked command in '/home/kohki/HONROBO_WS/ros_joy/src/ros_joy' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/ros_joy/build/ros_joy/prefix_override:/home/kohki/HONROBO_WS/ros_joy/install/ros_joy/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ros_joy build --build-base /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/build install --record /home/kohki/HONROBO_WS/ros_joy/build/ros_joy/install.log --single-version-externally-managed

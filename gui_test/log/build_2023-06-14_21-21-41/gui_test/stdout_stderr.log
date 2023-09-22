@@ -1,0 +1,37 @@
+running egg_info
+creating ../../build/gui_test/gui_test.egg-info
+writing ../../build/gui_test/gui_test.egg-info/PKG-INFO
+writing dependency_links to ../../build/gui_test/gui_test.egg-info/dependency_links.txt
+writing entry points to ../../build/gui_test/gui_test.egg-info/entry_points.txt
+writing requirements to ../../build/gui_test/gui_test.egg-info/requires.txt
+writing top-level names to ../../build/gui_test/gui_test.egg-info/top_level.txt
+writing manifest file '../../build/gui_test/gui_test.egg-info/SOURCES.txt'
+reading manifest file '../../build/gui_test/gui_test.egg-info/SOURCES.txt'
+writing manifest file '../../build/gui_test/gui_test.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/kohki/HONROBO_WS/gui_test/build/gui_test/build
+creating /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib
+creating /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib/gui_test
+copying gui_test/__init__.py -> /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib/gui_test
+copying gui_test/gui_test.py -> /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib/gui_test
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test
+copying /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib/gui_test/__init__.py -> /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test
+copying /home/kohki/HONROBO_WS/gui_test/build/gui_test/build/lib/gui_test/gui_test.py -> /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test
+byte-compiling /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test/gui_test.py to gui_test.cpython-310.pyc
+running install_data
+creating /home/kohki/HONROBO_WS/gui_test/install/gui_test/share/ament_index
+creating /home/kohki/HONROBO_WS/gui_test/install/gui_test/share/ament_index/resource_index
+creating /home/kohki/HONROBO_WS/gui_test/install/gui_test/share/ament_index/resource_index/packages
+copying resource/gui_test -> /home/kohki/HONROBO_WS/gui_test/install/gui_test/share/ament_index/resource_index/packages
+copying package.xml -> /home/kohki/HONROBO_WS/gui_test/install/gui_test/share/gui_test
+running install_egg_info
+Copying ../../build/gui_test/gui_test.egg-info to /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info
+running install_scripts
+Installing gui_test script to /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/gui_test
+writing list of installed files to '/home/kohki/HONROBO_WS/gui_test/build/gui_test/install.log'

@@ -1,0 +1,26 @@
+running egg_info
+writing ../build/gui_test/gui_test.egg-info/PKG-INFO
+writing dependency_links to ../build/gui_test/gui_test.egg-info/dependency_links.txt
+writing entry points to ../build/gui_test/gui_test.egg-info/entry_points.txt
+writing requirements to ../build/gui_test/gui_test.egg-info/requires.txt
+writing top-level names to ../build/gui_test/gui_test.egg-info/top_level.txt
+reading manifest file '../build/gui_test/gui_test.egg-info/SOURCES.txt'
+writing manifest file '../build/gui_test/gui_test.egg-info/SOURCES.txt'
+running build
+running build_py
+copying gui_test/nomal_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test
+copying gui_test/gui_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test
+running install
+running install_lib
+copying /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test/nomal_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test
+copying /home/kohki/HONROBO_WS/gui_test/src/build/gui_test/build/lib/gui_test/gui_recieve.py -> /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test
+byte-compiling /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test/nomal_recieve.py to nomal_recieve.cpython-310.pyc
+byte-compiling /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test/gui_recieve.py to gui_recieve.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../build/gui_test/gui_test.egg-info to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info
+running install_scripts
+Installing gui_pub script to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/gui_test
+Installing gui_sub script to /home/kohki/HONROBO_WS/gui_test/src/install/gui_test/lib/gui_test
+writing list of installed files to '/home/kohki/HONROBO_WS/gui_test/src/build/gui_test/install.log'

@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/realsense_test/realsense_test.egg-info/PKG-INFO
+writing dependency_links to ../../build/realsense_test/realsense_test.egg-info/dependency_links.txt
+writing entry points to ../../build/realsense_test/realsense_test.egg-info/entry_points.txt
+writing requirements to ../../build/realsense_test/realsense_test.egg-info/requires.txt
+writing top-level names to ../../build/realsense_test/realsense_test.egg-info/top_level.txt
+reading manifest file '../../build/realsense_test/realsense_test.egg-info/SOURCES.txt'
+writing manifest file '../../build/realsense_test/realsense_test.egg-info/SOURCES.txt'
+running build
+running build_py
+copying realsense_test/realsense_sub.py -> /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test
+running install
+running install_lib
+copying /home/kohki/HONROBO_WS/rs_ws/build/realsense_test/build/lib/realsense_test/realsense_sub.py -> /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test
+byte-compiling /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test/realsense_sub.py to realsense_sub.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/realsense_test/realsense_test.egg-info to /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/python3.10/site-packages/realsense_test-0.0.0-py3.10.egg-info
+running install_scripts
+Installing realsense_sub script to /home/kohki/HONROBO_WS/rs_ws/install/realsense_test/lib/realsense_test
+writing list of installed files to '/home/kohki/HONROBO_WS/rs_ws/build/realsense_test/install.log'

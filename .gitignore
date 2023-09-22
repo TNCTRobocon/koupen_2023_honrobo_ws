@@ -1,8 +1,8 @@
 __pycache__/
-build/
-log/
-test/
+build/*
+log/*
+install/*
+test/*
+
 .vscode/
 *.txt
-!joy_can/
-!ros_joy/

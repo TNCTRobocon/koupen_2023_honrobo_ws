@@ -1,0 +1,23 @@
+[0.276s] Invoking command in '/home/kohki/HONROBO_WS/gui_test/src/gui_test': PYTHONPATH=/home/kohki/HONROBO_WS/gui_test/build/gui_test/prefix_override:/home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages: /usr/bin/python3 setup.py egg_info --egg-base ../../build/gui_test build --build-base /home/kohki/HONROBO_WS/gui_test/build/gui_test/build install --record /home/kohki/HONROBO_WS/gui_test/build/gui_test/install.log --single-version-externally-managed
+[0.377s] running egg_info
+[0.378s] writing ../../build/gui_test/gui_test.egg-info/PKG-INFO
+[0.378s] writing dependency_links to ../../build/gui_test/gui_test.egg-info/dependency_links.txt
+[0.378s] writing entry points to ../../build/gui_test/gui_test.egg-info/entry_points.txt
+[0.378s] writing requirements to ../../build/gui_test/gui_test.egg-info/requires.txt
+[0.378s] writing top-level names to ../../build/gui_test/gui_test.egg-info/top_level.txt
+[0.379s] reading manifest file '../../build/gui_test/gui_test.egg-info/SOURCES.txt'
+[0.380s] writing manifest file '../../build/gui_test/gui_test.egg-info/SOURCES.txt'
+[0.380s] running build
+[0.380s] running build_py
+[0.380s] running install
+[0.380s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.380s]   warnings.warn(
+[0.380s] running install_lib
+[0.381s] running install_data
+[0.381s] running install_egg_info
+[0.382s] removing '/home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info' (and everything under it)
+[0.382s] Copying ../../build/gui_test/gui_test.egg-info to /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages/gui_test-0.0.0-py3.10.egg-info
+[0.382s] running install_scripts
+[0.394s] Installing gui_test script to /home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/gui_test
+[0.395s] writing list of installed files to '/home/kohki/HONROBO_WS/gui_test/build/gui_test/install.log'
+[0.408s] Invoked command in '/home/kohki/HONROBO_WS/gui_test/src/gui_test' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/gui_test/build/gui_test/prefix_override:/home/kohki/HONROBO_WS/gui_test/install/gui_test/lib/python3.10/site-packages: /usr/bin/python3 setup.py egg_info --egg-base ../../build/gui_test build --build-base /home/kohki/HONROBO_WS/gui_test/build/gui_test/build install --record /home/kohki/HONROBO_WS/gui_test/build/gui_test/install.log --single-version-externally-managed

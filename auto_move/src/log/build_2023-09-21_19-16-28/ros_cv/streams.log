@@ -1,0 +1,24 @@
+[0.497s] Invoking command in '/home/kohki/HONROBO_WS/auto_move/src/ros_cv': PYTHONPATH=/home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/prefix_override:/home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/ros_cv build --build-base /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build install --record /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/install.log --single-version-externally-managed
+[0.682s] running egg_info
+[0.682s] writing ../build/ros_cv/ros_cv.egg-info/PKG-INFO
+[0.682s] writing dependency_links to ../build/ros_cv/ros_cv.egg-info/dependency_links.txt
+[0.683s] writing entry points to ../build/ros_cv/ros_cv.egg-info/entry_points.txt
+[0.683s] writing requirements to ../build/ros_cv/ros_cv.egg-info/requires.txt
+[0.683s] writing top-level names to ../build/ros_cv/ros_cv.egg-info/top_level.txt
+[0.684s] reading manifest file '../build/ros_cv/ros_cv.egg-info/SOURCES.txt'
+[0.685s] writing manifest file '../build/ros_cv/ros_cv.egg-info/SOURCES.txt'
+[0.685s] running build
+[0.685s] running build_py
+[0.685s] copying ros_cv/ros_cv.py -> /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv
+[0.685s] running install
+[0.685s] running install_lib
+[0.686s] copying /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv/ros_cv.py -> /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv
+[0.687s] byte-compiling /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/ros_cv.py to ros_cv.cpython-310.pyc
+[0.687s] running install_data
+[0.688s] running install_egg_info
+[0.689s] removing '/home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv-0.0.0-py3.10.egg-info' (and everything under it)
+[0.689s] Copying ../build/ros_cv/ros_cv.egg-info to /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv-0.0.0-py3.10.egg-info
+[0.690s] running install_scripts
+[0.704s] Installing ros_cv script to /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/ros_cv
+[0.704s] writing list of installed files to '/home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/install.log'
+[0.728s] Invoked command in '/home/kohki/HONROBO_WS/auto_move/src/ros_cv' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/prefix_override:/home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/ros_cv build --build-base /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build install --record /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/install.log --single-version-externally-managed
