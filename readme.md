@@ -5,5 +5,6 @@ ROS2
 CAN通信とか
 
 ## 今つかってるやつ
-JoyスティックのデータをCANにするやつ: joy_canのなかのjoy_can3.py
-QtでROS2を叩く: qi_test(なんでqi...?)
+- auto_move : 自動操縦
+- ros_joy : メインプログラム
+- rs_ws : realsense用

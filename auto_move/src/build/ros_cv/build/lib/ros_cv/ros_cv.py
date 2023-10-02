@@ -1,50 +1,74 @@
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Image,Joy
+from sensor_msgs.msg import Image,Joy,CompressedImage
 from cv_bridge import CvBridge
+from rclpy.qos import qos_profile_sensor_data
 
 from ultralytics import YOLO
 import cv2
 import math
+import numpy as np
 
 from .module.JoyCalcTools import JoyCalcTools
 
 class RosCv(Node):
     node_name = 'ros_cv'
-    sub_topic_name = 'joy'
+    sub_joy_topic_name = 'joy'
+    # sub_img_topic_name = 'image_topic_compressed'
+    sub_img_topic_name = "image_topic"
+    
     pub_joy_topic_name = 'converted_joy'
-    pub_img_topic_name = 'converted_img'
+    pub_img_topic_name = 'image_result'
     axis_max = 50
+
     
     def __init__(self):
+        global joy_data_r,cv_image
         super().__init__(self.node_name)
         
-        self.sub = self.create_subscription(Joy,self.sub_topic_name,self.callback,10)
+        self.sub = self.create_subscription(Joy,self.sub_joy_topic_name,self.callback,10)
+        self.sub2 = self.create_subscription(Image,self.sub_img_topic_name,self.callback2,10)
+        
         self.pub = self.create_publisher(Joy,self.pub_joy_topic_name,10)
         self.pub2 = self.create_publisher(Image,self.pub_img_topic_name,10)
         self.joy_msg = Joy()
         self.img = Image()
-        
-        self.cap = cv2.VideoCapture(0)
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,360)
+        self.bridge = CvBridge()
+
         self.model = YOLO("/home/kohki/HONROBO_WS/auto_move/src/ros_cv/ros_cv/weights/best.pt")
         self.joy_tool = JoyCalcTools(1)
+        self.get_logger().info("auto_move init")
         
     def callback(self,data):
-        frame, results = self.detect_fruits(data)
+        global joy_data_r
+        joy_data_r = data
+        
+    def callback2(self,image):
+        global cv_image
+        
+        # self.np_arr = np.frombuffer(image.data, np.uint8)
+        # cv_image = cv2.imdecode(self.np_arr, cv2.IMREAD_COLOR)
+        
+        cv_image = self.bridge.imgmsg_to_cv2(image)
+        
+        # cv_image = self.bridge.compressed_imgmsg_to_cv2(image)
+        self.get_logger().info("callbacked2")
+        self.mainprocess()
+        
+    def mainprocess(self):
+        global joy_data_r,cv_image
+        self.get_logger().info("callbacked main")
+        frame, results = self.detect_fruits(cv_image)
         dis, per, pm = self.calc_points(frame,results)
         ans = self.calc_move(dis,per)
-        recalc_joy = self.override_side_joy(data,ans,pm)
+        recalc_joy = self.override_side_joy(joy_data_r,ans,pm)
         self.publish_joy(recalc_joy,frame)
         
 
-    def detect_fruits(self,data):
-        ret, frame = self.cap.read()
-        if not ret:
-            return
-        results = self.model.track(source=frame, tracker="botsort.yaml", conf=0.8, iou=0.8)
-        return frame,results
+    def detect_fruits(self,img):
+        # ret, frame = self.cap.read()
+        results = self.model.track(source=img, tracker="botsort.yaml", conf=0.8, iou=0.8)
+        return img,results
     
     def calc_points(self,frame,results):
         bbox = results[0].boxes.xyxy
@@ -107,8 +131,8 @@ class RosCv(Node):
     def publish_joy(self,joy,frame):
         self.joy_msg = joy
         self.pub.publish(self.joy_msg)
-        bridge = CvBridge()
-        imgs = bridge.cv2_to_imgmsg(frame, encoding="bgr8")
+
+        imgs = self.bridge.cv2_to_imgmsg(frame, encoding="bgr8")
         self.img = imgs
         self.pub2.publish(self.img)
         

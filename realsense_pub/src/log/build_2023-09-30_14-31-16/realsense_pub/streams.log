@@ -1,0 +1,24 @@
+[0.576s] Invoking command in '/home/kohki/HONROBO_WS/realsense_pub/src/realsense_pub': PYTHONPATH=/home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/prefix_override:/home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/realsense_pub build --build-base /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/build install --record /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/install.log --single-version-externally-managed
+[0.745s] running egg_info
+[0.745s] writing ../build/realsense_pub/realsense_pub.egg-info/PKG-INFO
+[0.745s] writing dependency_links to ../build/realsense_pub/realsense_pub.egg-info/dependency_links.txt
+[0.746s] writing entry points to ../build/realsense_pub/realsense_pub.egg-info/entry_points.txt
+[0.746s] writing requirements to ../build/realsense_pub/realsense_pub.egg-info/requires.txt
+[0.746s] writing top-level names to ../build/realsense_pub/realsense_pub.egg-info/top_level.txt
+[0.748s] reading manifest file '../build/realsense_pub/realsense_pub.egg-info/SOURCES.txt'
+[0.754s] writing manifest file '../build/realsense_pub/realsense_pub.egg-info/SOURCES.txt'
+[0.754s] running build
+[0.754s] running build_py
+[0.754s] copying realsense_pub/realsense_pub.py -> /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/build/lib/realsense_pub
+[0.754s] running install
+[0.755s] running install_lib
+[0.756s] copying /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/build/lib/realsense_pub/realsense_pub.py -> /home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages/realsense_pub
+[0.756s] byte-compiling /home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages/realsense_pub/realsense_pub.py to realsense_pub.cpython-310.pyc
+[0.757s] running install_data
+[0.757s] running install_egg_info
+[0.759s] removing '/home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages/realsense_pub-0.0.0-py3.10.egg-info' (and everything under it)
+[0.759s] Copying ../build/realsense_pub/realsense_pub.egg-info to /home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages/realsense_pub-0.0.0-py3.10.egg-info
+[0.760s] running install_scripts
+[0.774s] Installing realsense_pub script to /home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/realsense_pub
+[0.774s] writing list of installed files to '/home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/install.log'
+[0.792s] Invoked command in '/home/kohki/HONROBO_WS/realsense_pub/src/realsense_pub' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/prefix_override:/home/kohki/HONROBO_WS/realsense_pub/src/install/realsense_pub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/realsense_pub build --build-base /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/build install --record /home/kohki/HONROBO_WS/realsense_pub/src/build/realsense_pub/install.log --single-version-externally-managed

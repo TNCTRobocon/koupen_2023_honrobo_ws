@@ -1,0 +1,15 @@
+running develop
+running egg_info
+writing can_messenger.egg-info/PKG-INFO
+writing dependency_links to can_messenger.egg-info/dependency_links.txt
+writing entry points to can_messenger.egg-info/entry_points.txt
+writing requirements to can_messenger.egg-info/requires.txt
+writing top-level names to can_messenger.egg-info/top_level.txt
+reading manifest file 'can_messenger.egg-info/SOURCES.txt'
+writing manifest file 'can_messenger.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/python3.10/site-packages/can-messenger.egg-link (link to .)
+Installing can_messenger script to /home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/can_messenger
+
+Installed /home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger
+running install_data
