@@ -38,7 +38,7 @@ class RosCv(Node):
         self.img = Image()
         self.bridge = CvBridge()
 
-        self.model = YOLO("/home/kohki/HONROBO_WS/auto_move/src/ros_cv/ros_cv/weights/best.pt")
+        self.model = YOLO("auto_move/src/ros_cv/ros_cv/weights/best.pt")
         self.joy_tool = JoyCalcTools(1)
         
     def joy_callback(self,data):
