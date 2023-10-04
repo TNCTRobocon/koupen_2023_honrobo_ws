@@ -1,0 +1,30 @@
+running develop
+Removing /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros-cv.egg-link (link to .)
+running egg_info
+writing ../build/ros_cv/ros_cv.egg-info/PKG-INFO
+writing dependency_links to ../build/ros_cv/ros_cv.egg-info/dependency_links.txt
+writing entry points to ../build/ros_cv/ros_cv.egg-info/entry_points.txt
+writing requirements to ../build/ros_cv/ros_cv.egg-info/requires.txt
+writing top-level names to ../build/ros_cv/ros_cv.egg-info/top_level.txt
+reading manifest file '../build/ros_cv/ros_cv.egg-info/SOURCES.txt'
+writing manifest file '../build/ros_cv/ros_cv.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ros_cv/ros_cv.py -> /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv
+running install
+running install_lib
+copying /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv/__init__.py -> /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv
+creating /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/module
+copying /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv/module/__init__.py -> /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/module
+copying /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv/module/JoyCalcTools.py -> /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/module
+copying /home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/build/lib/ros_cv/ros_cv.py -> /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv
+byte-compiling /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/module/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/module/JoyCalcTools.py to JoyCalcTools.cpython-310.pyc
+byte-compiling /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv/ros_cv.py to ros_cv.cpython-310.pyc
+running install_data
+running install_egg_info
+Copying ../build/ros_cv/ros_cv.egg-info to /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/python3.10/site-packages/ros_cv-0.0.0-py3.10.egg-info
+running install_scripts
+Installing ros_cv script to /home/kohki/HONROBO_WS/auto_move/src/install/ros_cv/lib/ros_cv
+writing list of installed files to '/home/kohki/HONROBO_WS/auto_move/src/build/ros_cv/install.log'

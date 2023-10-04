@@ -1,0 +1,17 @@
+[0.648s] Invoking command in '/home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger': PYTHONPATH=/home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger/prefix_override:/home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger/build --no-deps install_data
+[0.845s] running develop
+[0.966s] running egg_info
+[0.966s] writing can_messenger.egg-info/PKG-INFO
+[0.966s] writing dependency_links to can_messenger.egg-info/dependency_links.txt
+[0.966s] writing entry points to can_messenger.egg-info/entry_points.txt
+[0.966s] writing requirements to can_messenger.egg-info/requires.txt
+[0.966s] writing top-level names to can_messenger.egg-info/top_level.txt
+[0.968s] reading manifest file 'can_messenger.egg-info/SOURCES.txt'
+[0.968s] writing manifest file 'can_messenger.egg-info/SOURCES.txt'
+[1.001s] running build_ext
+[1.001s] Creating /home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/python3.10/site-packages/can-messenger.egg-link (link to .)
+[1.002s] Installing can_messenger script to /home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/can_messenger
+[1.002s] 
+[1.002s] Installed /home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger
+[1.002s] running install_data
+[1.034s] Invoked command in '/home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger' returned '0': PYTHONPATH=/home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger/prefix_override:/home/kohki/HONROBO_WS/can_messenger/src/install/can_messenger/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/kohki/HONROBO_WS/can_messenger/src/build/can_messenger/build --no-deps install_data
