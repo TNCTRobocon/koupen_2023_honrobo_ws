@@ -22,7 +22,6 @@ class JoyCan(Node):
     
     node_name = 'ros_joy'
     sub_topic_name = 'converted_joy'
-    
     joy_topic_name = 'can_joy'
     btn_topic_name = 'can_btn'
     data_topic_name = 'can_data'

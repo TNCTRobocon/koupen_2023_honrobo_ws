@@ -45,20 +45,20 @@ def generate_launch_description():
             prefix="xterm -e",
             output="screen",
         ),
-        Node(
-            package='can_messenger',
-            executable='can_messenger',
-            prefix="xterm -e",
-            output="screen",
-        ),
+        # Node(
+        #     package='can_messenger',
+        #     executable='can_messenger',
+        #     prefix="xterm -e",
+        #     output="screen",
+        # ),
         
         Node(
             package='rqt_image_view',
             executable='rqt_image_view',
         ),
-        Node(
-            package='rqt_graph',
-            executable='rqt_graph',
-        ),
+        # Node(
+        #     package='rqt_graph',
+        #     executable='rqt_graph',
+        # ),
 
     ])

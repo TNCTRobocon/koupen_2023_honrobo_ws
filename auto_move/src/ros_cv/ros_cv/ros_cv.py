@@ -57,11 +57,14 @@ class RosCv(Node):
         
         # 圧縮しない
         cv_image = self.bridge.imgmsg_to_cv2(image)
-        self.mainprocess()
+        self.mainprocess(0) # 0: auto_ON 1:auto_OFF
         
-    def mainprocess(self):
+    def mainprocess(self,mode):
         global joy_data_r,cv_image
+        
         try: #Joyデータを受信していなかった際に待機(処理を飛ばす)
+            if mode:
+                self.publish_joy(joy_data_r,frame)
             if joy_data_r:
                 frame, results = self.detect_fruits(cv_image)
                 dis, per, pm = self.calc_points(frame,results)
@@ -73,7 +76,7 @@ class RosCv(Node):
         
 
     def detect_fruits(self,img):
-        results = self.model.track(source=img, tracker="botsort.yaml", conf=0.5, iou=0.5, persist=True) # 検出&トラッキング
+        results = self.model.track(source=img, tracker="botsort.yaml", conf=0.7, iou=0.7, persist=True) # 検出&トラッキング
         return img,results
     
     def calc_points(self,frame,results):

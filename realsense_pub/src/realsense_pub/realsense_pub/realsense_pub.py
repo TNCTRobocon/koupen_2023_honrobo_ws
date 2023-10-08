@@ -42,9 +42,12 @@ class RsPub(Node):
         depth_frame = aligned_frames.get_depth_frame()
         depth_image = np.asanyarray(depth_frame.get_data())
         depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image,alpha=0.08),cv2.COLORMAP_JET)
+        depth_colormap_s = cv2.resize(depth_colormap,(640,480))
+        
+        # depth_colormap_s = cv2.resize(depth_image,(640,480))
         
         RGB_image_s = cv2.resize(RGB_image, (640,480))
-        depth_colormap_s = cv2.resize(depth_colormap,(640,480))
+        
         
         return RGB_image_s, depth_colormap_s
     
@@ -53,6 +56,7 @@ class RsPub(Node):
         self.img_msg = image
         self.image_pub.publish(self.img_msg)
         depth = self.bridge.cv2_to_imgmsg(depth, encoding="bgr8")
+        # depth = self.bridge.cv2_to_imgmsg(depth, "16UC1")
         self.depth_msg = depth
         self.depth_pub.publish(self.depth_msg)
         
