@@ -152,7 +152,7 @@ class RosCv(Node):
 
         imgs = self.bridge.cv2_to_imgmsg(frame, encoding="bgr8")
         self.img = imgs
-        self.pub2.publish(self.img)
+       # self.pub2.publish(self.img)
         
         
  
