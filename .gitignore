@@ -1,8 +1,8 @@
 __pycache__/
-build/*
-log/*
-install/*
-test/*
+build/
+log/
+install/
+test/
 
 .vscode/
 *.txt
