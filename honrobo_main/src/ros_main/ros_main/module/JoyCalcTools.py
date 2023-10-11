@@ -86,3 +86,8 @@ class JoyCalcTools():
         for i in range(len(pros)):
             raw[i] = pros[i]
         return raw
+    
+    def override_config(self,raw,config):
+        for i in range(len(config)):
+            raw[i + 2] = config[i]
+        return raw

@@ -15,12 +15,13 @@ class RosMain(Node):
     
     jou_linux_sub_topic = "joy"
     selected_point_sub_topic = "result_mouse_left"
+    config_sub_topic = "config"
     
-    joy_sub_topic_name = 'can_joy'
-    btn_sub_topic_name = 'can_btn'
-    data_sub_topic_name = 'can_data'
-    img_sub_topic_name = 'result'
-    depth_sub_topic_name = 'depth'
+    joy_pub_topic_name = 'can_joy'
+    btn_pub_topic_name = 'can_btn'
+    data_pub_topic_name = 'can_data'
+    img_pub_topic_name = 'result'
+    depth_pub_topic_name = 'depth'
     
     CONTOROLLER_MODE = 1 # 0=Portable_PC 1=F310
     DEAD_ZONE = 3
@@ -38,12 +39,13 @@ class RosMain(Node):
         
         self.joy_sub = self.create_subscription(Joy,self.jou_linux_sub_topic,self.sub_joy_callback,10)
         self.selected_point_sub = self.create_subscription(Point,self.selected_point_sub_topic,self.sub_point_callback,10)
+        self.config_sub = self.create_subscription(Int16MultiArray,self.config_sub_topic,self.sub_config_callback,10)
         
-        self.pub_joy = self.create_publisher(Int16MultiArray,self.joy_sub_topic_name,10)
-        self.pub_btn = self.create_publisher(Int16MultiArray,self.btn_sub_topic_name,10)
-        self.pub_data = self.create_publisher(Int16MultiArray,self.data_sub_topic_name,10)
-        self.pub_image = self.create_publisher(Image,self.img_sub_topic_name,10)
-        self.pub_depth = self.create_publisher(Image,self.depth_sub_topic_name,10)
+        self.pub_joy = self.create_publisher(Int16MultiArray,self.joy_pub_topic_name,10)
+        self.pub_btn = self.create_publisher(Int16MultiArray,self.btn_pub_topic_name,10)
+        self.pub_data = self.create_publisher(Int16MultiArray,self.data_pub_topic_name,10)
+        self.pub_image = self.create_publisher(Image,self.img_pub_topic_name,10)
+        self.pub_depth = self.create_publisher(Image,self.depth_pub_topic_name,10)
         
         self.rs = Realsense()
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
@@ -52,28 +54,38 @@ class RosMain(Node):
         self.imsg = Image()
         self.bridge = CvBridge()
         self.point = None
+        self.config = [0,0,0,0,0,0]
         
         
     def sub_point_callback(self,data):
         self.point = data
         
+    
+    def sub_config_callback(self,data):
+        self.config = data.data
+        
         
     def sub_joy_callback(self,data):
+        # 2行をコメントアウトで自動操縦OFF
         image, depth, side_distance, front_distance= self.recognition()
         print(side_distance, front_distance)
+        
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
+        
+        # 2行をコメントアウトで自動操縦OFF
         joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
         joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
         
-        joy_data = [int(i) for i in joy_data]
+        joy_data = list(map(int,joy_data))
         tmp_data_1 = Int16MultiArray(data=joy_data)
         self.pub_joy.publish(tmp_data_1)
         
-        copied_button = [int(i) for i in copied_button]
+        copied_button = list(map(int,copied_button))
         tmp_data_2 = Int16MultiArray(data=copied_button)
         self.pub_btn.publish(tmp_data_2)
         
-        hat_msg_data = [int(i) for i in hat_msg_data]
+        hat_msg_data = list(map(int,hat_msg_data))
+        self.joy_tool.override_config(hat_msg_data,self.config)
         tmp_data_3 = Int16MultiArray(data=hat_msg_data)
         self.pub_data.publish(tmp_data_3)
         
@@ -87,7 +99,7 @@ class RosMain(Node):
 
         
     def recognition(self):
-        image, depth, result = self.rs.get_realsense_frame() #2つ目は深度情報だよ
+        image, depth, result = self.rs.get_realsense_frame()
         bbox_np = self.recog.detect_fruits(image)
         origin_point, detected_list = self.recog.calc_point(image,bbox_np)
 
@@ -112,8 +124,8 @@ class RosMain(Node):
             self.point.x = float(detected_rect_point.detected_centor_x)
             self.point.y = float(detected_rect_point.detected_centor_y)
             
-            self.move_side_distance = self.recog.calc_side_movement(origin_point,detected_rect_point)
-            self.move_side_distance *= self.MAX_MOVE_AXES
+            self.move_side_distance = self.recog.calc_side_movement(origin_point,detected_rect_point) * self.MAX_MOVE_AXES
+            # self.move_side_distance *= self.MAX_MOVE_AXES
             self.move_front_distance = self.recog.calc_front_movement(detected_rect_point,result)
             self.move_front_distance = (self.move_front_distance / self.MAX_MOVE_METER) * self.MAX_MOVE_AXES
             return image, depth, self.move_side_distance, self.move_front_distance
@@ -128,7 +140,6 @@ class RosMain(Node):
         # 1
         joy_data = [0] * 8
         joy_data = self.joy_tool.recaluculating_joy(joy)
-        joy_data = [int(i) for i in joy_data]
         #tmp_data = Int16MultiArray(data=joy_data)
         
         # 2
@@ -140,15 +151,14 @@ class RosMain(Node):
         processed_button = status.get_status()
 
         copied_button = self.joy_tool.copy_button(raw_button_data,processed_button)
-        copied_button = [int(i) for i in copied_button]
         #tmp_data2 = Int16MultiArray(data=copied_button)
 
         # 3
-        hat_msg_data = self.joy_tool.recaluculating_hat(joy)
-        hat_msg_data = [int(i) for i in hat_msg_data]
+        
+        else_msg_data = self.joy_tool.recaluculating_hat(joy)
         #tmp_data3 = Int16MultiArray(data=hat_msg_data)
         
-        return joy_data, copied_button, hat_msg_data
+        return joy_data, copied_button, else_msg_data
     
 def main(args=None):
     rclpy.init(args=args)
