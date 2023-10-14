@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt dist-upgrade
 sudo apt update && sudo apt install curl gnupg lsb-release
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
@@ -16,3 +18,4 @@ pip install customtkinter
 pip install ultralytics
 pip install opencv-python
 pip install pyrealsense2
+pip install python-can
