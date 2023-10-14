@@ -47,7 +47,7 @@ class RosMain(Node):
         self.pub_image = self.create_publisher(Image,self.img_pub_topic_name,10)
         self.pub_depth = self.create_publisher(Image,self.depth_pub_topic_name,10)
         
-        # self.rs = Realsense()
+        self.rs = Realsense()
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
         self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE,self.DEAD_ZONE)
         self.recog = Recog()
