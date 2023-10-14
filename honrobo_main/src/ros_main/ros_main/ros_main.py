@@ -67,14 +67,14 @@ class RosMain(Node):
         
     def sub_joy_callback(self,data):
         # 2行をコメントアウトで自動操縦OFF
-        image, depth, side_distance, front_distance= self.recognition()
-        print(side_distance, front_distance)
+        # image, depth, side_distance, front_distance= self.recognition()
+        # print(side_distance, front_distance)
         
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
         
         # 2行をコメントアウトで自動操縦OFF
-        joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
-        joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
+        # joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
+        # joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
         
         joy_data = list(map(int,joy_data))
         tmp_data_1 = Int16MultiArray(data=joy_data)
@@ -89,13 +89,13 @@ class RosMain(Node):
         tmp_data_3 = Int16MultiArray(data=hat_msg_data)
         self.pub_data.publish(tmp_data_3)
         
-        img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
-        self.imsg = img
-        self.pub_image.publish(img)
+        # img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
+        # self.imsg = img
+        # self.pub_image.publish(img)
         
-        depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
-        self.imsg = depth_img
-        self.pub_depth.publish(depth_img)
+        # depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
+        # self.imsg = depth_img
+        # self.pub_depth.publish(depth_img)
 
         
     def recognition(self):
