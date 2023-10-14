@@ -22,7 +22,7 @@ class CanMessenger(Node):
         self.can_btn = UseMessage(0x00A)
         self.can_data = UseMessage(0x00B)
         
-        self.Ucan = UsbCan(1) # 1:CAN OFF 0: CAN ON
+        self.Ucan = UsbCan(0) # 1:CAN OFF 0: CAN ON
         self.Ucan.open()
         self.get_logger().info("setup done")
         
