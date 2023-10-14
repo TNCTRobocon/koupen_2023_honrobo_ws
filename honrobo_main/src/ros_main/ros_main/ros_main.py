@@ -23,7 +23,7 @@ class RosMain(Node):
     img_pub_topic_name = 'result'
     depth_pub_topic_name = 'depth'
     
-    CONTOROLLER_MODE = 0 # 0=Portable_PC 1=F310
+    CONTOROLLER_MODE = 1 # 0=Portable_PC 1=F310
     DEAD_ZONE = 3
     STATE_BUTTONS = 1
     NUM_OF_SAVE_STATE_BUTTONS = 1
