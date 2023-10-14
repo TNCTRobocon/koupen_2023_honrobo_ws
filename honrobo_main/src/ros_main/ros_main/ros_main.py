@@ -30,6 +30,7 @@ class RosMain(Node):
     ARROW_LOST_FRAME = 6
     MAX_MOVE_AXES = 50
     MAX_MOVE_METER = 3
+    MOVE_MODE = 0 # 0=MAnual 1=Auto
     
     move_distance = 0
 
@@ -47,7 +48,8 @@ class RosMain(Node):
         self.pub_image = self.create_publisher(Image,self.img_pub_topic_name,10)
         self.pub_depth = self.create_publisher(Image,self.depth_pub_topic_name,10)
         
-        self.rs = Realsense()
+        if self.MOVE_MODE:
+            self.rs = Realsense()
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
         self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE,self.DEAD_ZONE)
         self.recog = Recog()
@@ -67,14 +69,16 @@ class RosMain(Node):
         
     def sub_joy_callback(self,data):
         # 2行をコメントアウトで自動操縦OFF
-        # image, depth, side_distance, front_distance= self.recognition()
-        # print(side_distance, front_distance)
+        if self.MOVE_MODE:
+            image, depth, side_distance, front_distance= self.recognition()
+            print(side_distance, front_distance)
         
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
         
         # 2行をコメントアウトで自動操縦OFF
-        # joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
-        # joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
+        if self.MOVE_MODE:
+            joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
+            joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
         
         joy_data = list(map(int,joy_data))
         tmp_data_1 = Int16MultiArray(data=joy_data)
@@ -89,13 +93,14 @@ class RosMain(Node):
         tmp_data_3 = Int16MultiArray(data=hat_msg_data)
         self.pub_data.publish(tmp_data_3)
         
-        # img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
-        # self.imsg = img
-        # self.pub_image.publish(img)
-        
-        # depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
-        # self.imsg = depth_img
-        # self.pub_depth.publish(depth_img)
+        if self.MOVE_MODE:
+            img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
+            self.imsg = img
+            self.pub_image.publish(img)
+            
+            depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
+            self.imsg = depth_img
+            self.pub_depth.publish(depth_img)
 
         
     def recognition(self):
