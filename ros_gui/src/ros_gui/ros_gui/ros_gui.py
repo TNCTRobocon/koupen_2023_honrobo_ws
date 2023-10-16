@@ -5,11 +5,29 @@ from std_msgs.msg import Int16MultiArray
 
 FONT_TYPE = "meiryo"
 
+class Switch():
+    def __init__(self,num):
+        self.num = num
+        self.keep = 1
+        
+    def countup(self):
+        self.keep += 1
+        if self.keep > self.num:
+            self.keep = 1
+            
+    def countdown(self):
+        self.keep -= 1
+        if self.keep < 1:
+            self.keep = self.num
+            
+    def return_index(self):
+        return self.keep - 1
+    
 
 class App(ct.CTk):
-    status = [0,0,0,0,0,0]
-    color_config = ["#3a7ebf","#bf3a7a"]
-    color_hover_config = ["#325882","#823275"]
+    status = [1,1,1,1,1,1]
+    color_config = ["#3a7ebf","#bf3a7a","#3abf60"]
+    color_hover_config = ["#325882","#823275","#32823f"]
     def __init__(self):
         super().__init__()
         rclpy.init()
@@ -25,6 +43,13 @@ class App(ct.CTk):
         self.grid_rowconfigure(3, weight=1)
         self.grid_rowconfigure(4, weight=1)
         self.grid_rowconfigure(5, weight=1)
+        
+        self.btn1 = Switch(3)
+        self.btn2 = Switch(2)
+        self.btn3 = Switch(2)
+        self.btn4 = Switch(2)
+        self.btn5 = Switch(2)
+        self.btn6 = Switch(2)
         
         self.setup_form()
 
@@ -52,39 +77,45 @@ class App(ct.CTk):
         self.button6.grid(column=0, row=5, padx=5, pady=5, sticky="ew")
         
     def callback(self):
-        self.status[0] = ~self.status[0] & 1
-        self.button1.configure(fg_color=self.color_config[self.status[0]])
-        self.button1.configure(hover_color=self.color_hover_config[self.status[0]])
+        self.btn1.countup()
+        self.button1.configure(fg_color=self.color_config[self.btn1.return_index()])
+        self.button1.configure(hover_color=self.color_hover_config[self.btn1.return_index()])
+        self.status[0] = self.btn1.keep
         self.ros_gui.cvt_and_send(self.status)
 
     def callback2(self):
-        self.status[1] = ~self.status[1] & 1
-        self.button2.configure(fg_color=self.color_config[self.status[1]])
-        self.button2.configure(hover_color=self.color_hover_config[self.status[1]])
+        self.btn2.countup()
+        self.button2.configure(fg_color=self.color_config[self.btn2.return_index()])
+        self.button2.configure(hover_color=self.color_hover_config[self.btn2.return_index()])
+        self.status[1] = self.btn2.keep
         self.ros_gui.cvt_and_send(self.status)
         
     def callback3(self):
-        self.status[2] = ~self.status[2] & 1
-        self.button3.configure(fg_color=self.color_config[self.status[2]])
-        self.button3.configure(hover_color=self.color_hover_config[self.status[2]])
+        self.btn3.countup()
+        self.button3.configure(fg_color=self.color_config[self.btn3.return_index()])
+        self.button3.configure(hover_color=self.color_hover_config[self.btn3.return_index()])
+        self.status[2] = self.btn3.keep
         self.ros_gui.cvt_and_send(self.status)
         
     def callback4(self):
-        self.status[3] = ~self.status[3] & 1
-        self.button4.configure(fg_color=self.color_config[self.status[3]])
-        self.button4.configure(hover_color=self.color_hover_config[self.status[3]])
+        self.btn4.countup()
+        self.button4.configure(fg_color=self.color_config[self.btn4.return_index()])
+        self.button4.configure(hover_color=self.color_hover_config[self.btn4.return_index()])
+        self.status[3] = self.btn4.keep
         self.ros_gui.cvt_and_send(self.status)
         
     def callback5(self):
-        self.status[4] = ~self.status[4] & 1
-        self.button5.configure(fg_color=self.color_config[self.status[4]])
-        self.button5.configure(hover_color=self.color_hover_config[self.status[4]])
+        self.btn5.countup()
+        self.button5.configure(fg_color=self.color_config[self.btn5.return_index()])
+        self.button5.configure(hover_color=self.color_hover_config[self.btn5.return_index()])
+        self.status[4] = self.btn5.keep
         self.ros_gui.cvt_and_send(self.status)
 
     def callback6(self):
-        self.status[5] = ~self.status[5] & 1
-        self.button6.configure(fg_color=self.color_config[self.status[5]])
-        self.button6.configure(hover_color=self.color_hover_config[self.status[5]])
+        self.btn6.countup()
+        self.button6.configure(fg_color=self.color_config[self.btn6.return_index()])
+        self.button6.configure(hover_color=self.color_hover_config[self.btn6.return_index()])
+        self.status[5] = self.btn6.keep
         self.ros_gui.cvt_and_send(self.status)
         
 
