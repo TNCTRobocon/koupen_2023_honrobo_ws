@@ -1,6 +1,5 @@
 from ultralytics import YOLO
 import cv2
-import math
 import numpy as np
 
 from dataclasses import dataclass
@@ -14,7 +13,7 @@ class Recog():
         # self.model = YOLO("/home/kohki/HONROBO_WS/honrobo_main/src/ros_main/weights/best.pt") # PATH
         self.detected_none_count = 0
     def detect_fruits(self, image):
-        results = self.model.track(source=image, tracker="botsort.yaml", conf=0.5, iou=0.5, persist=True, show=False)
+        results = self.model.track(source=image, tracker="botsort.yaml", conf=0.5, iou=0.5, persist=True, show=True)
         bbox = results[0].boxes.xyxy
         bbox_np = bbox.to('cpu').detach().numpy().copy()
         return bbox_np
@@ -89,9 +88,9 @@ class Recog():
         
         return depth_data_meters
     
-    def detecting_check(self, bbox_np):
+    def detecting_check(self, bbox_np, mode):
         
-        if bbox_np.size == 0:
+        if bbox_np.size == 0 or mode != 1:
             self.detected_none_count += 1
         else :
             self.detected_none_count = 0

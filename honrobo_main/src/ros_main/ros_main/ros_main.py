@@ -23,14 +23,14 @@ class RosMain(Node):
     img_pub_topic_name = 'result'
     depth_pub_topic_name = 'depth'
     
-    CONTOROLLER_MODE = 0 # 0=Portable-PC 1=F310
+    CONTOROLLER_MODE = 1 # 0=Portable-PC 1=F310
     DEAD_ZONE = 3
     STATE_BUTTONS = 1
     NUM_OF_SAVE_STATE_BUTTONS = 1
-    ARROW_LOST_FRAME = 6
+    ARROW_LOST_FRAME = 20
     MAX_MOVE_AXES = 50
     MAX_MOVE_METER = 3
-    MOVE_MODE = 0 # 0=Manual 1=Auto
+    MOVE_MODE = 1 # 0=Manual 1=Auto
     
     move_distance = 0
 
@@ -57,7 +57,7 @@ class RosMain(Node):
         self.bridge = CvBridge()
         
         self.point = None
-        self.config = [0,0,0,0,0,0]
+        self.config = [1, 1, 1, 1, 1, 1]
         
         
     def sub_point_callback(self, data):
@@ -69,7 +69,7 @@ class RosMain(Node):
         
         
     def sub_joy_callback(self, data):
-        if self.MOVE_MODE:
+        if self.MOVE_MODE: 
             image, depth, side_distance, front_distance= self.recognition()
             print(side_distance, front_distance)
         
@@ -110,7 +110,9 @@ class RosMain(Node):
         image = self.recog.draw_frame_line(image, origin_point)
 
 
-        if self.recog.detecting_check(bbox_np) < self.ARROW_LOST_FRAME :
+        if self.recog.detecting_check(bbox_np, self.config[5]) < self.ARROW_LOST_FRAME :
+
+            
             if detected_list == None:
                 return image, depth, 0, 0
             
@@ -124,6 +126,9 @@ class RosMain(Node):
             if detected_rect_point == None:
                 return image, depth, 0, 0
             
+            if self.config[5] != 1:
+                return image, depth, 0, 0
+            
             image = self.recog.draw_to_fruits_line(image, origin_point, detected_rect_point)
             self.point.x = float(detected_rect_point.detected_centor_x)
             self.point.y = float(detected_rect_point.detected_centor_y)
@@ -134,6 +139,7 @@ class RosMain(Node):
             self.move_front_distance = (self.move_front_distance / self.MAX_MOVE_METER) * self.MAX_MOVE_AXES
             return image, depth, self.move_side_distance, self.move_front_distance
         else :
+            print("lost")
             self.point = None
             return image, depth, 0, 0
             

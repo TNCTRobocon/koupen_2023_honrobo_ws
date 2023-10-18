@@ -5,7 +5,6 @@ ROS2
 CAN通信とか
 
 ## 今つかってるやつ
-- auto_move : 自動操縦
-- ros_joy : Joyスティック計算
-- realsense_pub : realsenseパブリシャー
+- honrobo_main : メイン処理
 - can_messenger : CAN送信用
+- ros_gui : GUI用
