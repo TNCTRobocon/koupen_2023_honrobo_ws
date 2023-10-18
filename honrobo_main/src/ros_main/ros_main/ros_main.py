@@ -98,7 +98,7 @@ class RosMain(Node):
             self.pub_image.publish(img)
             
             depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
-            self.imsg = depth_img # これいる？
+            self.imsg = depth_img # これいる？ いらん
             self.pub_depth.publish(depth_img)
 
         
