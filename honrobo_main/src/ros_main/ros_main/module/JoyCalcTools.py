@@ -7,12 +7,12 @@ class JoyCalcTools():
         recaluculated_joy = [0] * 8
         if self.__PC == 0:
             ###Potable-PC
-            recaluculated_joy[0] = joy.axes[0] * 127 + 128
-            recaluculated_joy[1] = joy.axes[1] * 127 + 128
-            recaluculated_joy[2] = joy.axes[3] * -127 + 128
-            recaluculated_joy[3] = joy.axes[4] * -127 + 128
-            recaluculated_joy[4] = joy.axes[2] * 127 + 128
-            recaluculated_joy[5] = joy.axes[5] * 127 + 128
+            recaluculated_joy[0] = joy.axes[0] * 127 + 128 #left-horizontal
+            recaluculated_joy[1] = joy.axes[1] * 127 + 128 #left-vertical
+            recaluculated_joy[2] = joy.axes[4] * 127 + 128 #right-horizontal
+            recaluculated_joy[3] = joy.axes[3] * -127 + 128 #right-vertical
+            recaluculated_joy[4] = joy.axes[2] * 127 + 128 #left-trigger
+            recaluculated_joy[5] = joy.axes[5] * 127 + 128 #right-trigger
             recaluculated_joy[6] = 0 #none
             recaluculated_joy[7] = 0 #none
         elif self.__PC == 1:

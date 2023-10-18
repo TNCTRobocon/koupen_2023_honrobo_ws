@@ -5,9 +5,9 @@ from std_msgs.msg import Int16MultiArray
 from geometry_msgs.msg import Point
 from cv_bridge import CvBridge
 
-from .module.realsensetools import Realsense
+from .module.RealsenseTools import Realsense
 from .module.JoyCalcTools import JoyCalcTools
-from .module.recognition import Recog
+from .module.Recognition import Recog
 from .module.Switch import *
 
 class RosMain(Node):
@@ -23,14 +23,14 @@ class RosMain(Node):
     img_pub_topic_name = 'result'
     depth_pub_topic_name = 'depth'
     
-    CONTOROLLER_MODE = 1 # 0=Portable_PC 1=F310
+    CONTOROLLER_MODE = 0 # 0=Portable-PC 1=F310
     DEAD_ZONE = 3
     STATE_BUTTONS = 1
     NUM_OF_SAVE_STATE_BUTTONS = 1
     ARROW_LOST_FRAME = 6
     MAX_MOVE_AXES = 50
     MAX_MOVE_METER = 3
-    MOVE_MODE = 0 # 0=MAnual 1=Auto
+    MOVE_MODE = 0 # 0=Manual 1=Auto
     
     move_distance = 0
 
@@ -55,6 +55,7 @@ class RosMain(Node):
         self.recog = Recog()
         self.imsg = Image()
         self.bridge = CvBridge()
+        
         self.point = None
         self.config = [0,0,0,0,0,0]
         
@@ -68,14 +69,12 @@ class RosMain(Node):
         
         
     def sub_joy_callback(self,data):
-        # 2行をコメントアウトで自動操縦OFF
         if self.MOVE_MODE:
             image, depth, side_distance, front_distance= self.recognition()
             print(side_distance, front_distance)
         
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
         
-        # 2行をコメントアウトで自動操縦OFF
         if self.MOVE_MODE:
             joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
             joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
@@ -95,11 +94,11 @@ class RosMain(Node):
         
         if self.MOVE_MODE:
             img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
-            self.imsg = img
+            self.imsg = img # これいる？
             self.pub_image.publish(img)
             
             depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
-            self.imsg = depth_img
+            self.imsg = depth_img # これいる？
             self.pub_depth.publish(depth_img)
 
         
@@ -120,8 +119,8 @@ class RosMain(Node):
             if self.point == None:
                 return image, depth, 0, 0
             
-            
             detected_rect_point = self.recog.search_from_list(detected_list,self.point)
+            
             if detected_rect_point == None:
                 return image, depth, 0, 0
             
@@ -130,7 +129,7 @@ class RosMain(Node):
             self.point.y = float(detected_rect_point.detected_centor_y)
             
             self.move_side_distance = self.recog.calc_side_movement(origin_point,detected_rect_point) * self.MAX_MOVE_AXES
-            # self.move_side_distance *= self.MAX_MOVE_AXES
+            
             self.move_front_distance = self.recog.calc_front_movement(detected_rect_point,result)
             self.move_front_distance = (self.move_front_distance / self.MAX_MOVE_METER) * self.MAX_MOVE_AXES
             return image, depth, self.move_side_distance, self.move_front_distance
@@ -145,7 +144,6 @@ class RosMain(Node):
         # 1
         joy_data = [0] * 8
         joy_data = self.joy_tool.recaluculating_joy(joy)
-        #tmp_data = Int16MultiArray(data=joy_data)
         
         # 2
         raw_button_data,toggle_button_data = self.joy_tool.replase_button(joy,self.NUM_OF_SAVE_STATE_BUTTONS)
@@ -156,19 +154,15 @@ class RosMain(Node):
         processed_button = status.get_status()
 
         copied_button = self.joy_tool.copy_button(raw_button_data,processed_button)
-        #tmp_data2 = Int16MultiArray(data=copied_button)
 
         # 3
-        
         else_msg_data = self.joy_tool.recaluculating_hat(joy)
-        #tmp_data3 = Int16MultiArray(data=hat_msg_data)
         
         return joy_data, copied_button, else_msg_data
     
 def main(args=None):
     rclpy.init(args=args)
     rosmain = RosMain()
-    
     try:
         rclpy.spin(rosmain)
     except KeyboardInterrupt:

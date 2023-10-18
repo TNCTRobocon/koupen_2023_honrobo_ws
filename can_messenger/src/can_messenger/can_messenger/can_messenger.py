@@ -1,7 +1,6 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int16MultiArray
-import can
 
 from .module.UsbCan import UsbCan 
 from .module.UseMessage import UseMessage
