@@ -58,6 +58,8 @@ class RosMain(Node):
         
         self.point = None
         self.config = [1, 1, 1, 1, 1, 1]
+        self.move_side_distance = 0
+        self.move_front_distance = 0
         
         
     def sub_point_callback(self, data):
@@ -79,26 +81,28 @@ class RosMain(Node):
             joy_data = self.joy_tool.override_joy(joy_data, 2, side_distance)
             joy_data = self.joy_tool.override_joy(joy_data, 3, front_distance)
         
-        joy_data = list(map(int, joy_data))
+        to_int = lambda x: list(map(int, x))
+        
+        joy_data = to_int(joy_data)
         tmp_data_1 = Int16MultiArray(data=joy_data)
         self.pub_joy.publish(tmp_data_1)
         
-        copied_button = list(map(int, copied_button))
+        copied_button = to_int(copied_button)
         tmp_data_2 = Int16MultiArray(data=copied_button)
         self.pub_btn.publish(tmp_data_2)
         
-        hat_msg_data = list(map(int, hat_msg_data))
+        hat_msg_data = to_int(hat_msg_data)
         self.joy_tool.override_config(hat_msg_data, self.config)
         tmp_data_3 = Int16MultiArray(data=hat_msg_data)
         self.pub_data.publish(tmp_data_3)
         
         if self.USE_CAMERA:
             img = self.bridge.cv2_to_imgmsg(image, encoding="bgr8")
-            self.imsg = img # これいる？
+            # self.imsg = img # これいる？
             self.pub_image.publish(img)
             
             depth_img = self.bridge.cv2_to_imgmsg(depth, encoding="bgr8")
-            self.imsg = depth_img # これいる？ いらん
+            # self.imsg = depth_img # これいる？ いらん
             self.pub_depth.publish(depth_img)
 
         
@@ -114,7 +118,7 @@ class RosMain(Node):
 
             
             if detected_list == None:
-                return image, depth, 0, 0
+                return image, depth, self.move_side_distance, self.move_front_distance
             
             image = self.recog.draw_all_fruits_line(image,detected_list)
             
@@ -124,7 +128,7 @@ class RosMain(Node):
             detected_rect_point = self.recog.search_from_list(detected_list,self.point)
             
             if detected_rect_point == None:
-                return image, depth, 0, 0
+                return image, depth, self.move_side_distance, self.move_front_distance
             
             if self.config[5] != 1:
                 return image, depth, 0, 0
@@ -141,7 +145,9 @@ class RosMain(Node):
         else :
             print("lost")
             self.point = None
-            return image, depth, 0, 0
+            self.move_side_distance = 0
+            self.move_front_distance = 0
+            return image, depth, self.move_side_distance, self.move_front_distance
             
 
     

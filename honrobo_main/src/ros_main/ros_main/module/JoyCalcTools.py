@@ -76,7 +76,7 @@ class JoyCalcTools():
                 data[i] = 0
     
     def override_joy(self,target_data,num,data):
-        clamp= lambda x: min(255, max(x, 0))
+        clamp = lambda x: min(255, max(x, 0))
         target_data[num] = clamp(target_data[num] + data)
         
         return target_data
