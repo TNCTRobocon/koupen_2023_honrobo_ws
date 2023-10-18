@@ -1,9 +1,9 @@
 class JoyCalcTools():
-    def __init__(self,PC,DEADZONE):
+    def __init__(self, PC, DEADZONE):
         self.__PC = PC
         self.__DEADZONE = DEADZONE
         
-    def recaluculating_joy(self,joy):
+    def recaluculating_joy(self, joy):
         recaluculated_joy = [0] * 8
         if self.__PC == 0:
             ###Potable-PC
@@ -29,13 +29,12 @@ class JoyCalcTools():
             pass
         
         ###common return
-        recaluculated_joy = list(map(int,recaluculated_joy))
+        recaluculated_joy = list(map(int, recaluculated_joy))
         self.make_deadzone(recaluculated_joy)
         return recaluculated_joy
     
-    def recaluculating_hat(self,joy):
+    def recaluculating_hat(self, joy):
         recaluculated_hat = [0] * 8
-        
         if self.__PC == 0:
             ###Portable-PC
             recaluculated_hat[0] = joy.axes[7] + 1 #hat_vertical
@@ -69,7 +68,7 @@ class JoyCalcTools():
             replased_button[i] = joy.buttons[i]
         for i in range(8):
             raw_button[i] = joy.buttons[i] 
-        return raw_button,replased_button
+        return raw_button, replased_button
     
     def make_deadzone(self,data):
         for i in range(len(data)):
@@ -79,7 +78,7 @@ class JoyCalcTools():
     def override_joy(self,target_data,num,data):
         clamp= lambda x: min(255, max(x, 0))
         target_data[num] = clamp(target_data[num] + data)
-       
+        
         return target_data
     
     def copy_button(self,raw,pros):

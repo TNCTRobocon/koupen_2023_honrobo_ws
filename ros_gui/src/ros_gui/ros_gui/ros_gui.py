@@ -26,16 +26,14 @@ class Switch():
 
 class App(ct.CTk):
     FONT_TYPE = "meiryo"
-    color_config = ["#3a7ebf","#bf3a7a","#3abf60"]
-    color_hover_config = ["#325882","#823275","#32823f"]
-    text_config_1 = ["今:通過動かないモード","今:通過前進同期モード","今:通過初期位置モード"]
-    text_config_2 = ["今:ベルト動かないモード","今:ベルト動くモード"]
-    text_config_3 = ["今:前輪DOWN","今:前輪UP"]
-    text_config_4 = ["今:補助輪UP","今:補助輪DOWN"]
-    text_config_5 = ["今:後輪DOWN","今:後輪UP"]
-    text_config_6 = ["今:おまけON","今:おまけOFF"]
-    
-    fonts = "meiryo"
+    color_config = ["#3a7ebf", "#bf3a7a", "#3abf60"]
+    color_hover_config = ["#325882", "#823275", "#32823f"]
+    text_config_1 = ["今:通過動かないモード", "今:通過前進同期モード", "今:通過初期位置モード"]
+    text_config_2 = ["今:ベルト動かないモード", "今:ベルト動くモード"]
+    text_config_3 = ["今:前輪DOWN", "今:前輪UP"]
+    text_config_4 = ["今:補助輪UP", "今:補助輪DOWN"]
+    text_config_5 = ["今:後輪DOWN", "今:後輪UP"]
+    text_config_6 = ["今:おまけON", "今:おまけOFF"]
     
     def __init__(self):
         super().__init__()
@@ -140,7 +138,7 @@ class RosGui(Node):
     
     def __init__(self):
         super().__init__(self.node_name)
-        self.pub_config = self.create_publisher(Int16MultiArray,self.config_sub_topic_name,10)
+        self.pub_config = self.create_publisher(Int16MultiArray, self.config_sub_topic_name,10)
 
     def cvt_and_send(self,data):
         send_data = Int16MultiArray(data=data)

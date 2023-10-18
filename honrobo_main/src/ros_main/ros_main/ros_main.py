@@ -38,20 +38,20 @@ class RosMain(Node):
     def __init__(self):
         super().__init__(self.node_name)
         
-        self.joy_sub = self.create_subscription(Joy,self.jou_linux_sub_topic,self.sub_joy_callback,10)
-        self.selected_point_sub = self.create_subscription(Point,self.selected_point_sub_topic,self.sub_point_callback,10)
-        self.config_sub = self.create_subscription(Int16MultiArray,self.config_sub_topic,self.sub_config_callback,10)
+        self.joy_sub = self.create_subscription(Joy, self.jou_linux_sub_topic, self.sub_joy_callback, 10)
+        self.selected_point_sub = self.create_subscription(Point, self.selected_point_sub_topic, self.sub_point_callback, 10)
+        self.config_sub = self.create_subscription(Int16MultiArray, self.config_sub_topic, self.sub_config_callback, 10)
         
-        self.pub_joy = self.create_publisher(Int16MultiArray,self.joy_pub_topic_name,10)
-        self.pub_btn = self.create_publisher(Int16MultiArray,self.btn_pub_topic_name,10)
-        self.pub_data = self.create_publisher(Int16MultiArray,self.data_pub_topic_name,10)
-        self.pub_image = self.create_publisher(Image,self.img_pub_topic_name,10)
-        self.pub_depth = self.create_publisher(Image,self.depth_pub_topic_name,10)
+        self.pub_joy = self.create_publisher(Int16MultiArray, self.joy_pub_topic_name, 10)
+        self.pub_btn = self.create_publisher(Int16MultiArray, self.btn_pub_topic_name, 10)
+        self.pub_data = self.create_publisher(Int16MultiArray, self.data_pub_topic_name, 10)
+        self.pub_image = self.create_publisher(Image, self.img_pub_topic_name, 10)
+        self.pub_depth = self.create_publisher(Image, self.depth_pub_topic_name, 10)
         
         if self.MOVE_MODE:
             self.rs = Realsense()
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
-        self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE,self.DEAD_ZONE)
+        self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE, self.DEAD_ZONE)
         self.recog = Recog()
         self.imsg = Image()
         self.bridge = CvBridge()
@@ -60,15 +60,15 @@ class RosMain(Node):
         self.config = [0,0,0,0,0,0]
         
         
-    def sub_point_callback(self,data):
+    def sub_point_callback(self, data):
         self.point = data
         
     
-    def sub_config_callback(self,data):
+    def sub_config_callback(self, data):
         self.config = data.data
         
         
-    def sub_joy_callback(self,data):
+    def sub_joy_callback(self, data):
         if self.MOVE_MODE:
             image, depth, side_distance, front_distance= self.recognition()
             print(side_distance, front_distance)
@@ -76,28 +76,28 @@ class RosMain(Node):
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
         
         if self.MOVE_MODE:
-            joy_data = self.joy_tool.override_joy(joy_data,2,side_distance)
-            joy_data = self.joy_tool.override_joy(joy_data,3,front_distance)
+            joy_data = self.joy_tool.override_joy(joy_data, 2, side_distance)
+            joy_data = self.joy_tool.override_joy(joy_data, 3, front_distance)
         
-        joy_data = list(map(int,joy_data))
+        joy_data = list(map(int, joy_data))
         tmp_data_1 = Int16MultiArray(data=joy_data)
         self.pub_joy.publish(tmp_data_1)
         
-        copied_button = list(map(int,copied_button))
+        copied_button = list(map(int, copied_button))
         tmp_data_2 = Int16MultiArray(data=copied_button)
         self.pub_btn.publish(tmp_data_2)
         
-        hat_msg_data = list(map(int,hat_msg_data))
-        self.joy_tool.override_config(hat_msg_data,self.config)
+        hat_msg_data = list(map(int, hat_msg_data))
+        self.joy_tool.override_config(hat_msg_data, self.config)
         tmp_data_3 = Int16MultiArray(data=hat_msg_data)
         self.pub_data.publish(tmp_data_3)
         
         if self.MOVE_MODE:
-            img = self.bridge.cv2_to_imgmsg(image,encoding="bgr8")
+            img = self.bridge.cv2_to_imgmsg(image, encoding="bgr8")
             self.imsg = img # これいる？
             self.pub_image.publish(img)
             
-            depth_img = self.bridge.cv2_to_imgmsg(depth,encoding="bgr8")
+            depth_img = self.bridge.cv2_to_imgmsg(depth, encoding="bgr8")
             self.imsg = depth_img # これいる？ いらん
             self.pub_depth.publish(depth_img)
 
@@ -107,7 +107,7 @@ class RosMain(Node):
         bbox_np = self.recog.detect_fruits(image)
         origin_point, detected_list = self.recog.calc_point(image,bbox_np)
 
-        image = self.recog.draw_frame_line(image,origin_point)
+        image = self.recog.draw_frame_line(image, origin_point)
 
 
         if self.recog.detecting_check(bbox_np) < self.ARROW_LOST_FRAME :
@@ -124,11 +124,11 @@ class RosMain(Node):
             if detected_rect_point == None:
                 return image, depth, 0, 0
             
-            image = self.recog.draw_to_fruits_line(image,origin_point,detected_rect_point)
+            image = self.recog.draw_to_fruits_line(image, origin_point, detected_rect_point)
             self.point.x = float(detected_rect_point.detected_centor_x)
             self.point.y = float(detected_rect_point.detected_centor_y)
             
-            self.move_side_distance = self.recog.calc_side_movement(origin_point,detected_rect_point) * self.MAX_MOVE_AXES
+            self.move_side_distance = self.recog.calc_side_movement(origin_point, detected_rect_point) * self.MAX_MOVE_AXES
             
             self.move_front_distance = self.recog.calc_front_movement(detected_rect_point,result)
             self.move_front_distance = (self.move_front_distance / self.MAX_MOVE_METER) * self.MAX_MOVE_AXES
@@ -139,21 +139,21 @@ class RosMain(Node):
             
 
     
-    def contoroller(self,joy):
-        status = SwitchStatus(1,3,self.NUM_OF_SAVE_STATE_BUTTONS)
+    def contoroller(self, joy):
+        status = SwitchStatus(1, 3, self.NUM_OF_SAVE_STATE_BUTTONS)
         # 1
         joy_data = [0] * 8
         joy_data = self.joy_tool.recaluculating_joy(joy)
         
         # 2
-        raw_button_data,toggle_button_data = self.joy_tool.replase_button(joy,self.NUM_OF_SAVE_STATE_BUTTONS)
+        raw_button_data,toggle_button_data = self.joy_tool.replase_button(joy, self.NUM_OF_SAVE_STATE_BUTTONS)
         
         changed_switch = self.t_switch.judge_changed_button(toggle_button_data)
         if not changed_switch == -1:
             status.toggle_status(changed_switch)
         processed_button = status.get_status()
 
-        copied_button = self.joy_tool.copy_button(raw_button_data,processed_button)
+        copied_button = self.joy_tool.copy_button(raw_button_data, processed_button)
 
         # 3
         else_msg_data = self.joy_tool.recaluculating_hat(joy)

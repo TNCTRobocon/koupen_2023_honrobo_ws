@@ -13,9 +13,9 @@ class CanMessenger(Node):
     
     def __init__(self) -> None:
         super().__init__(self.node_name)
-        self.sub_joy = self.create_subscription(Int16MultiArray,self.joy_topic,self.joy_callback,10)
-        self.sub_btn = self.create_subscription(Int16MultiArray,self.btn_topic,self.btn_callback,10)
-        self.sub_data = self.create_subscription(Int16MultiArray,self.data_topic,self.data_callback,10)
+        self.sub_joy = self.create_subscription(Int16MultiArray, self.joy_topic, self.joy_callback, 10)
+        self.sub_btn = self.create_subscription(Int16MultiArray, self.btn_topic, self.btn_callback, 10)
+        self.sub_data = self.create_subscription(Int16MultiArray, self.data_topic, self.data_callback, 10)
         
         self.can_joy = UseMessage(0x009)
         self.can_btn = UseMessage(0x00A)
@@ -25,19 +25,19 @@ class CanMessenger(Node):
         self.Ucan.open()
         self.get_logger().info("setup done")
         
-    def joy_callback(self,data):
+    def joy_callback(self, data):
         txmsg = self.can_joy.update_message(data.data)
         self.Ucan.send(txmsg)
         print_text = "axis:{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3}\n"
         self.get_logger().info(print_text.format(*data.data))
         
-    def btn_callback(self,data):
+    def btn_callback(self, data):
         txmsg = self.can_btn.update_message(data.data)
         self.Ucan.send(txmsg)
         print_text = "button:{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3}\n"
         self.get_logger().info(print_text.format(*data.data))
     
-    def data_callback(self,data):
+    def data_callback(self, data):
         txmsg = self.can_data.update_message(data.data)
         self.Ucan.send(txmsg)
         print_text = "data:{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3},{:0=3}\n"
