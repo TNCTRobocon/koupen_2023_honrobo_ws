@@ -13,7 +13,7 @@ from .module.Switch import *
 class RosMain(Node):
     node_name = "ros_main"
     
-    jou_linux_sub_topic = "joy"
+    joy_linux_sub_topic = "joy"
     selected_point_sub_topic = "result_mouse_left"
     config_sub_topic = "config"
     
@@ -38,7 +38,7 @@ class RosMain(Node):
     def __init__(self):
         super().__init__(self.node_name)
         
-        self.joy_sub = self.create_subscription(Joy, self.jou_linux_sub_topic, self.sub_joy_callback, 10)
+        self.joy_sub = self.create_subscription(Joy, self.joy_linux_sub_topic, self.sub_joy_callback, 10)
         self.selected_point_sub = self.create_subscription(Point, self.selected_point_sub_topic, self.sub_point_callback, 10)
         self.config_sub = self.create_subscription(Int16MultiArray, self.config_sub_topic, self.sub_config_callback, 10)
         
@@ -52,6 +52,7 @@ class RosMain(Node):
             self.rs = Realsense()
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
         self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE, self.DEAD_ZONE)
+        self.status = SwitchStatus(1, 3, self.NUM_OF_SAVE_STATE_BUTTONS)
         self.recog = Recog()
         self.imsg = Image()
         self.bridge = CvBridge()
@@ -113,10 +114,7 @@ class RosMain(Node):
 
         image = self.recog.draw_frame_line(image, origin_point)
 
-
         if self.recog.detecting_check(bbox_np, self.config[5]) < self.ARROW_LOST_FRAME :
-
-            
             if detected_list == None:
                 return image, depth, self.move_side_distance, self.move_front_distance
             
@@ -152,7 +150,6 @@ class RosMain(Node):
 
     
     def contoroller(self, joy):
-        status = SwitchStatus(1, 3, self.NUM_OF_SAVE_STATE_BUTTONS)
         # 1
         joy_data = [0] * 8
         joy_data = self.joy_tool.recaluculating_joy(joy)
@@ -162,8 +159,8 @@ class RosMain(Node):
         
         changed_switch = self.t_switch.judge_changed_button(toggle_button_data)
         if not changed_switch == -1:
-            status.toggle_status(changed_switch)
-        processed_button = status.get_status()
+            self.status.toggle_status(changed_switch)
+        processed_button = self.status.get_status()
 
         copied_button = self.joy_tool.copy_button(raw_button_data, processed_button)
 
