@@ -26,10 +26,11 @@ class Switch():
 
 class App(ct.CTk):
     FONT_TYPE = "meiryo"
-    status = [1, 1, 1, 1, 1, 1]
+    statu = [1, 1, 1, 1, 1, 1]
     config = [3, 2, 2, 2, 2, 2]
     
     color_config = ["#3a7ebf", "#bf3a7a", "#3abf60"]
+    color_hover_config = ["#325882", "#823275", "#32823f"]
     text_config_mat = []
     
     text_config_1 = ["今:通過動かないモード", "今:通過前進同期モード", "今:通過初期位置モード"]
@@ -76,8 +77,8 @@ class App(ct.CTk):
         
     
     def check_config(self,num):
-        if self.status[num] + 1 > self.config[num]:
-            self.status[num] = 1
+        if self.statu[num]  > self.config[num]:
+            self.statu[num] = 1
             
     def change_step(self,mode):
         if mode: #increse
@@ -89,16 +90,18 @@ class App(ct.CTk):
             if self.preset < 0:
                 self.preset = 7
         
-        print(self.preset)
+        print("preset :" + str(self.preset))
         for i in range(3):
-            self.status[i + 2] = self.preset_config[self.preset][i]
+            self.statu[i + 2] = self.preset_config[self.preset][i]
             
     def override_gui(self):
         for i in range(6):
-            self.button_mat[i].configure(fg_color=self.color_config[self.status[i] - 1])
-            self.button_mat[i].configure(text=self.text_config_mat[i][self.status[i] - 1])
+            self.button_mat[i].configure(fg_color=self.color_config[self.statu[i] - 1])
+            self.button_mat[i].configure(text=self.text_config_mat[i][self.statu[i] - 1])
+            self.button_mat[i].configure(hover_color=self.color_hover_config[self.statu[i] - 1])
 
-        self.ros_gui.cvt_and_send(self.status)
+        self.ros_gui.cvt_and_send(self.statu)
+        print(self.statu)
             
     def setup_form(self):
         ct.set_appearance_mode("dark")
@@ -137,33 +140,33 @@ class App(ct.CTk):
 
         
     def callback(self):
-        self.status[0] += 1 
+        self.statu[0] += 1 
         self.check_config(0)
         self.override_gui()
         
 
     def callback2(self):
-        self.status[1] += 1 
+        self.statu[1] += 1 
         self.check_config(1)
         self.override_gui()
         
     def callback3(self):
-        self.status[2] += 1 
+        self.statu[2] += 1 
         self.check_config(2)
         self.override_gui()
         
     def callback4(self):
-        self.status[3] += 1 
+        self.statu[3] += 1 
         self.check_config(3)
         self.override_gui()
         
     def callback5(self):
-        self.status[4] += 1 
+        self.statu[4] += 1 
         self.check_config(4)
         self.override_gui()
 
     def callback6(self):
-        self.status[5] += 1 
+        self.statu[5] += 1 
         self.check_config(5)
         self.override_gui()
         
@@ -188,7 +191,6 @@ class RosGui(Node):
     def cvt_and_send(self,data):
         send_data = Int16MultiArray(data=data)
         self.pub_config.publish(send_data)
-        print(data)
         
 def main():
     try: 
