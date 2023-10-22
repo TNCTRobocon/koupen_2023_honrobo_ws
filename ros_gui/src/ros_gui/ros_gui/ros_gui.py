@@ -46,7 +46,7 @@ class App(ct.CTk):
     text_config_6 = ["今:自動操縦ON", "今:自動操縦OFF"]
     text_config_mat.append(text_config_6)
     
-    preset_config = [[1, 1, 1], [1, 2, 1], [2, 2, 1], [2, 1, 1], [1, 1, 1], [1, 1, 2], [1, 2, 1], [1, 1, 1]]
+    preset_config = [[1, 1, 1], [1, 2, 1], [2, 2, 1], [2, 1, 1], [1, 1, 1], [1, 1, 2], [1, 2, 2], [1, 2, 1], [1, 1, 1]]
     preset = 0
     
     button_mat = []
