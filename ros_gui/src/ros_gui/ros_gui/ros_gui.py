@@ -55,7 +55,7 @@ class App(ct.CTk):
         self.ros_gui = RosGui()
         
         self.fonts = (self.FONT_TYPE, 15)
-        self.geometry("350x500")
+        self.geometry("350x640")
         self.title("GUI")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
