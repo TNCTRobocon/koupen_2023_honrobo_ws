@@ -46,7 +46,7 @@ class RosMain(Node):
         self.pub_btn = self.create_publisher(Int16MultiArray, self.btn_pub_topic_name, 10)
         self.pub_data = self.create_publisher(Int16MultiArray, self.data_pub_topic_name, 10)
         self.pub_image = self.create_publisher(Image, self.img_pub_topic_name, 10)
-        self.pub_depth = self.create_publisher(Image, self.depth_pub_topic_name, 10)
+        # self.pub_depth = self.create_publisher(Image, self.depth_pub_topic_name, 10)
         
         if self.USE_CAMERA:
             self.rs = Realsense()
