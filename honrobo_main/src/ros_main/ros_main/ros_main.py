@@ -73,7 +73,7 @@ class RosMain(Node):
         
     def sub_joy_callback(self, data):
         if self.USE_CAMERA: 
-            image, depth, side_distance, front_distance= self.recognition()
+            image, _, side_distance, front_distance= self.recognition()
             print(side_distance, front_distance)
         
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
@@ -102,9 +102,9 @@ class RosMain(Node):
             # self.imsg = img # これいる？
             self.pub_image.publish(img)
             
-            depth_img = self.bridge.cv2_to_imgmsg(depth, encoding="bgr8")
-            # self.imsg = depth_img # これいる？ いらん
-            self.pub_depth.publish(depth_img)
+            # depth_img = self.bridge.cv2_to_imgmsg(depth, encoding="bgr8")
+            # # self.imsg = depth_img # これいる？ いらん
+            # self.pub_depth.publish(depth_img)
 
         
     def recognition(self):
