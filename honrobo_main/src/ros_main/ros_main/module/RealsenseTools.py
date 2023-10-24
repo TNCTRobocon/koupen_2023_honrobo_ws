@@ -5,8 +5,8 @@ import cv2
 class Realsense():
     def __init__(self):
         config = rs.config()
-        config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-        config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+        config.enable_stream(rs.stream.color, 320, 240, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.depth, 424, 240, rs.format.z16, 30)
         
         self.pipeline = rs.pipeline()
         profile = self.pipeline.start(config)
@@ -26,7 +26,7 @@ class Realsense():
         
         RGB_frame = aligned_frames.get_color_frame()
         RGB_image = np.asanyarray(RGB_frame.get_data())
-        RGB_image_s = cv2.resize(RGB_image, (640, 480))
+        RGB_image_s = cv2.resize(RGB_image, (320, 240))
         
         depth_frame = aligned_frames.get_depth_frame()
         
@@ -39,7 +39,7 @@ class Realsense():
         
         depth_image = np.asanyarray(result_frame.get_data()) 
         depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.08), cv2.COLORMAP_JET)
-        depth_colormap_s = cv2.resize(depth_colormap, (640, 480))
+        depth_colormap_s = cv2.resize(depth_colormap, (320, 240))
         
         
         
