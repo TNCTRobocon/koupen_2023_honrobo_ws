@@ -23,14 +23,14 @@ class RosMain(Node):
     img_pub_topic_name = 'result'
     # depth_pub_topic_name = 'depth'
     
-    CONTOROLLER_MODE = 1 # 0=Portable-PC 1=F310
+    CONTOROLLER_MODE = 0 # 0=Portable-PC 1=F310
     DEAD_ZONE = 3
     STATE_BUTTONS = 1
     NUM_OF_SAVE_STATE_BUTTONS = 1
     ARROW_LOST_FRAME = 20
     MAX_MOVE_AXES = 30
     MAX_MOVE_METER = 3
-    USE_CAMERA = 1 # 0=Manual 1=Auto
+    USE_CAMERA = 0 # 0=Manual 1=Auto
     
     move_distance = 0
 
@@ -48,13 +48,15 @@ class RosMain(Node):
         self.pub_image = self.create_publisher(Image, self.img_pub_topic_name, 10)
         # self.pub_depth = self.create_publisher(Image, self.depth_pub_topic_name, 10)
         
-        if self.USE_CAMERA:
+        if self.USE_CAMERA == 1:
             try:
                 self.rs = Realsense()
             except RuntimeError as e:
                 print("no realsense")
                 print(e)
                 self.USE_CAMERA = 0
+            else:
+                self.USE_CAMERA = 1
         self.t_switch = ToggleSwitch(self.NUM_OF_SAVE_STATE_BUTTONS)
         self.joy_tool = JoyCalcTools(self.CONTOROLLER_MODE, self.DEAD_ZONE)
         self.status = SwitchStatus(1, 3, self.NUM_OF_SAVE_STATE_BUTTONS)
