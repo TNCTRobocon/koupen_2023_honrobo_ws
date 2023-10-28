@@ -30,7 +30,7 @@ class RosMain(Node):
     ARROW_LOST_FRAME = 20
     MAX_MOVE_AXES = 30
     MAX_MOVE_METER = 3
-    USE_CAMERA = 0 # 0=Manual 1=Auto
+    USE_CAMERA = 1 # 0=Manual 1=Auto
     
     move_distance = 0
 
@@ -86,8 +86,8 @@ class RosMain(Node):
         joy_data, copied_button, hat_msg_data = self.contoroller(data)
         
         if self.USE_CAMERA:
-            joy_data = self.joy_tool.override_joy(joy_data, 2, side_distance)
-            joy_data = self.joy_tool.override_joy(joy_data, 3, front_distance)
+            joy_data = self.joy_tool.override_joy(joy_data, 1, side_distance)
+            joy_data = self.joy_tool.override_joy(joy_data, 0, front_distance)
         
         to_int = lambda x: list(map(int, x))
         
