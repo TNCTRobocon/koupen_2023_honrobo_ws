@@ -34,7 +34,9 @@ class Realsense():
         # filter_frame = self.depth_to_disparity.process(filter_frame)
         # filter_frame = self.spatial.process(filter_frame)
         # filter_frame = self.disparity_to_depth.process(filter_frame)
-        filter_frame = self.hole_filling.process(filter_frame)
+        # filter_frame = self.hole_filling.process(filter_frame)
+        filter_frame = self.hole_filling.process(depth_frame)
+        
         result_frame = filter_frame.as_depth_frame()
         
         depth_image = np.asanyarray(result_frame.get_data()) 
