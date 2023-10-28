@@ -30,7 +30,7 @@ class JoyCalcTools():
         
         ###common return
         recaluculated_joy = list(map(int, recaluculated_joy))
-        self.make_deadzone(recaluculated_joy)
+        # self.make_deadzone(recaluculated_joy)
         return recaluculated_joy
     
     def recaluculating_hat(self, joy):
