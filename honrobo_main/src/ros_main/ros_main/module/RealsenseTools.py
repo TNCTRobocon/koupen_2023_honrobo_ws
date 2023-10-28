@@ -30,10 +30,10 @@ class Realsense():
         
         depth_frame = aligned_frames.get_depth_frame()
         
-        filter_frame = self.decimate.process(depth_frame)
-        filter_frame = self.depth_to_disparity.process(filter_frame)
-        filter_frame = self.spatial.process(filter_frame)
-        filter_frame = self.disparity_to_depth.process(filter_frame)
+        # filter_frame = self.decimate.process(depth_frame)
+        # filter_frame = self.depth_to_disparity.process(filter_frame)
+        # filter_frame = self.spatial.process(filter_frame)
+        # filter_frame = self.disparity_to_depth.process(filter_frame)
         filter_frame = self.hole_filling.process(filter_frame)
         result_frame = filter_frame.as_depth_frame()
         
