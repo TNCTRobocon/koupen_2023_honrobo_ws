@@ -24,7 +24,7 @@ class RosMain(Node):
     # depth_pub_topic_name = 'depth'
     
     CONTOROLLER_MODE = 0 # 0=Portable-PC 1=F310
-    DEAD_ZONE = 3
+    DEAD_ZONE = 1
     STATE_BUTTONS = 1
     NUM_OF_SAVE_STATE_BUTTONS = 1
     ARROW_LOST_FRAME = 20
