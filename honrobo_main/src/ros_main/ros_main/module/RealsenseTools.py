@@ -26,7 +26,7 @@ class Realsense():
         
         RGB_frame = aligned_frames.get_color_frame()
         RGB_image = np.asanyarray(RGB_frame.get_data())
-        RGB_image_s = cv2.resize(RGB_image, (320, 240))
+        RGB_image_s = cv2.resize(RGB_image, (320, 180))
         
         depth_frame = aligned_frames.get_depth_frame()
         
@@ -39,7 +39,7 @@ class Realsense():
         
         depth_image = np.asanyarray(result_frame.get_data()) 
         depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.08), cv2.COLORMAP_JET)
-        depth_colormap_s = cv2.resize(depth_colormap, (320, 240))
+        depth_colormap_s = cv2.resize(depth_colormap, (320, 180))
         
         
         
